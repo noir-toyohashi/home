@@ -10,10 +10,11 @@
             margin: 0;
             padding: 0;
             font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-            background-color: #f4f4f4; /* 薄いグレーの背景 */
+            background-color: #f4f4f4;
             color: #333;
             line-height: 1.8;
             font-size: 14px;
+            padding-bottom: 70px; /* 下部固定メニュー用の余白 */
         }
 
         .container {
@@ -92,7 +93,7 @@
             color: #000;
             margin: 0 0 25px 0;
             padding-left: 15px;
-            border-left: 5px solid #c9a063; /* ゴールドのアクセント */
+            border-left: 5px solid #c9a063;
             display: flex;
             align-items: center;
         }
@@ -223,7 +224,34 @@
             margin-bottom: 10px;
         }
 
-        /* --- 8. FOOTER --- */
+        /* --- 8. 下部固定メニュー (スマホ用) --- */
+        .fixed-menu {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #000;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            z-index: 100;
+            border-top: 2px solid #c9a063;
+        }
+
+        .fixed-menu a {
+            color: #fff;
+            text-align: center;
+            font-size: 10px;
+            flex: 1;
+        }
+
+        .fixed-menu span {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 2px;
+        }
+
+        /* --- 9. FOOTER --- */
         footer {
             text-align: center;
             padding: 40px 0;
@@ -269,9 +297,8 @@
     <section id="news" class="section">
         <h3 class="section-title">INFORMATION</h3>
         <ul class="news-list">
-            <li><span class="date">2024.05.20</span><span class="label">NEW</span><span>新人セラピスト「あきな」さんが入店しました！</span></li>
-            <li><span class="date">2024.05.15</span><span class="label">SALE</span><span>期間限定：初回1,000円割引キャンペーン実施中</span></li>
-            <li><span class="date">2024.05.01</span><span class="label">INFO</span><span>ウェブサイトを公開いたしました。</span></li>
+            <li><span class="date">2024.05.20</span><span class="label">NEW</span><span>新人セラピスト入店！本日より受付開始です。</span></li>
+            <li><span class="date">2024.05.15</span><span class="label">SALE</span><span>期間限定：初回1,000円割引実施中！</span></li>
         </ul>
     </section>
 
@@ -310,7 +337,12 @@
         <h3 class="section-title">LINKS</h3>
         <div class="banner-container">
             <div class="banner-item">
-                <a href="https://momojob.net/" target="_blank"><img src="https://momojob.net/images/link/468-60.jpg" alt="風俗求人 ももジョブ"></a><br>
+                <a href="https://www.30baito.net/tokai/area_aichi.html" rel="nofollow" target="_blank">
+                    <img src="https://www.30baito.net/img/link/link_468x60_menesu.jpg" alt="30バイト" border="0">
+                </a>
+            </div>
+            <div class="banner-item">
+                <a href="https://momojob.net/" target="_blank"><img src="https://momojob.net/images/link/468-60.jpg" alt="ももジョブ"></a><br>
                 <a href="https://momojob.net/search/tokai/ar_189/" target="_blank" style="font-size:11px;">豊橋/豊川風俗求人</a>　<a href="https://momojob.net/search/tokai/ar_189/jd_32/" target="_blank" style="font-size:11px;">豊橋/豊川メンズエステ求人</a>
             </div>
             <div class="banner-item">
@@ -323,7 +355,7 @@
                 <a href="https://eslove.jp/chubu/aichi/shoplist/" target="_blank"><img src="https://eslove.jp/eslove_front_theme/banner/banner_200x40.jpg" alt="エステラブ"></a>
             </div>
             <div class="banner-item">
-                <a href="http://www.esthe-de-job.com/" target="_blank"><img src="http://www.esthe-de-job.com/img/bnnr/468x60.jpg" alt="エステdeジョブ"><br><span style="font-size:11px;color:#666;">メンズエステ求人の決定版エステdeジョブ</span></a>
+                <a href="http://www.esthe-de-job.com/" target="_blank"><img src="http://www.esthe-de-job.com/img/bnnr/468x60.jpg" alt="エステdeジョブ"><br><span style="font-size:11px;color:#666;">エステdeジョブ</span></a>
             </div>
             <div class="banner-item">
                 <a href="https://pafu2navi.com" target="_blank"><img src="https://pafu2navi.com/images/link/468_60.jpg" alt="ぱふぱふなび"></a>
@@ -335,16 +367,21 @@
                 <a href="https://www.fuzoku-job109.com/tokai/area_aichi-mikawa-toyohashi.html" target="_blank"><img src="https://www.fuzoku-job109.com/img/link/link_640x80_menesu.jpg" alt="はじ風"></a>
             </div>
             <div class="banner-item">
-                <a href="https://www.fues.jp/job/tokai/ippan/top.html" target="_blank"><img src="https://www.fues.jp/upload/banners/job_200.gif" alt="週刊エステ求人"><br><span style="font-size:11px;color:#666;">週刊エステ求人「東海・北陸」</span></a>
+                <a href="https://www.fues.jp/job/tokai/ippan/top.html" target="_blank"><img src="https://www.fues.jp/upload/banners/job_200.gif" alt="週刊エステ求人"></a>
             </div>
         </div>
     </section>
 </div>
 
+<div class="fixed-menu">
+    <a href="tel:000-0000-0000"><span>📞</span>電話予約</a>
+    <a href="sms:000-0000-0000"><span>✉</span>SMS予約</a>
+    <a href="#"><span>💬</span>LINE予約</a>
+</div>
+
 <footer>
     <div class="container">
         <p><strong>Noir - ノワール -</strong></p>
-        <p>豊橋市内の特設ルームにて営業中</p>
         <p>営業時間：10:00 ～ 翌5:00 / 年中無休</p>
         <p>&copy; 2024 Noir All Rights Reserved.</p>
     </div>
