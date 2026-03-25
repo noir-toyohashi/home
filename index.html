@@ -1,48 +1,405 @@
-<section id="system" class="section">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noir（ノワール） | 豊橋の高級メンズエステ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- 1. 基本設定（漆黒とゴールドの世界観） --- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Serif JP', serif;
+            background-color: #0a0a0a; /* 深い黒 */
+            color: #d1d1d1;
+            line-height: 1.8;
+            font-size: 14px;
+            padding-bottom: 80px;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.4s;
+        }
+
+        /* --- 2. ヘッダー --- */
+        header {
+            background: #000;
+            padding: 40px 0 0 0;
+            text-align: center;
+            border-bottom: 1px solid #444;
+        }
+
+        header .shop-name {
+            font-family: 'Cinzel', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: #c9a063; /* アンティークゴールド */
+            letter-spacing: 8px;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header .shop-catch {
+            font-size: 11px;
+            color: #888;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+        }
+
+        nav {
+            background: rgba(201, 160, 99, 0.05);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid #222;
+        }
+
+        nav li { border-right: 1px solid #222; }
+
+        nav a {
+            display: block;
+            padding: 15px 20px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #c9a063;
+        }
+
+        nav a:hover { background: #c9a063; color: #000; }
+
+        /* --- 3. セクション共通 --- */
+        .section {
+            background: #111;
+            padding: 40px;
+            margin-top: 30px;
+            border: 1px solid #222;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            color: #c9a063;
+            margin: 0 0 30px 0;
+            text-align: center;
+            letter-spacing: 4px;
+            display: block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 1px;
+            background: #c9a063;
+            margin: 10px auto;
+        }
+
+        /* --- 4. INFORMATION --- */
+        .news-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .news-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #222;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .news-list .date {
+            width: 90px;
+            color: #666;
+            font-family: 'Cinzel', serif;
+        }
+
+        .news-list .label {
+            border: 1px solid #c9a063;
+            color: #c9a063;
+            padding: 1px 6px;
+            font-size: 9px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        /* --- 5. THERAPIST --- */
+        .therapist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .therapist-card {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            padding: 25px;
+            border: 1px solid #222;
+            display: flex;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .therapist-card:hover { border-color: #c9a063; }
+
+        .therapist-icon {
+            width: 70px;
+            height: 70px;
+            background: #000;
+            color: #c9a063;
+            border: 1px solid #c9a063;
+            font-size: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            box-shadow: 0 0 15px rgba(201, 160, 99, 0.2);
+        }
+
+        .therapist-info h4 {
+            margin: 0 0 5px 0;
+            font-size: 18px;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .therapist-info p { margin: 0; font-size: 11px; color: #888; }
+
+        /* --- 6. SYSTEM（前日・当日料金テーブル） --- */
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .price-table th, .price-table td {
+            padding: 15px 10px;
+            border-bottom: 1px solid #222;
+        }
+
+        .price-table thead th {
+            text-align: right;
+            color: #c9a063;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .price-table thead th:first-child { text-align: left; }
+
+        .price-table tbody th {
+            text-align: left;
+            color: #fff;
+            font-weight: normal;
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+        }
+
+        .price-table td {
+            text-align: right;
+            color: #c9a063;
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+        }
+
+        .price-note-box {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+        }
+
+        .note-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            align-items: baseline;
+        }
+
+        .note-title { color: #c9a063; font-size: 12px; letter-spacing: 1px; }
+        .note-price { color: #fff; font-size: 14px; }
+        .note-desc { font-size: 10px; color: #666; text-align: right; margin-bottom: 15px; }
+
+        /* --- 7. LINKS --- */
+        .banner-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            opacity: 0.7;
+        }
+
+        .banner-container:hover { opacity: 1; }
+
+        .banner-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #333;
+        }
+
+        .banner-item { margin-bottom: 10px; text-align: center; }
+
+        /* --- 8. 固定メニュー --- */
+        .fixed-menu {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #000;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            z-index: 100;
+            border-top: 1px solid #c9a063;
+        }
+
+        .fixed-menu a {
+            color: #c9a063;
+            text-align: center;
+            font-size: 9px;
+        }
+
+        .fixed-menu span { display: block; font-size: 20px; margin-bottom: 3px; }
+
+        /* --- 9. FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            background: #000;
+            color: #444;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 600px) {
+            header .shop-name { font-size: 30px; }
+            .section { padding: 25px 15px; }
+            .price-table td { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="shop-name">NOIR</div>
+        <div class="shop-catch">TOYOHASHI PREMIUM MENS ESTHETIC</div>
+        <nav>
+            <ul>
+                <li><a href="#">TOP</a></li>
+                <li><a href="#therapist">THERAPIST</a></li>
+                <li><a href="#system">SYSTEM</a></li>
+                <li><a href="#links">LINKS</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <section id="news" class="section">
+        <h3 class="section-title">INFORMATION</h3>
+        <ul class="news-list">
+            <li><span class="date">MAY 25</span><span class="label">NEW</span><span>前日までのご予約で、お得な優待価格を適用中。</span></li>
+            <li><span class="date">MAY 20</span><span class="label">NEW</span><span>至高のセラピスト「あきな」入店。</span></li>
+        </ul>
+    </section>
+
+    <section id="therapist" class="section">
+        <h3 class="section-title">THERAPIST</h3>
+        <div class="therapist-grid">
+            <div class="therapist-card">
+                <div class="therapist-icon">A</div>
+                <div class="therapist-info">
+                    <h4>あきな</h4>
+                    <p>新人 / 清楚・エレガント</p>
+                    <p>Schedule：10:00 - 18:00</p>
+                </div>
+            </div>
+            <div class="therapist-card">
+                <div class="therapist-icon">H</div>
+                <div class="therapist-info">
+                    <h4>はるか</h4>
+                    <p>妖艶・ラグジュアリー</p>
+                    <p>Schedule：13:00 - 21:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="system" class="section">
         <h3 class="section-title">SYSTEM</h3>
         <table class="price-table">
             <thead>
                 <tr style="border-bottom: 2px solid #c9a063;">
                     <th style="color: #c9a063; font-size: 11px; letter-spacing: 2px;">COURSE</th>
-                    <th style="text-align: right; color: #c9a063; font-size: 11px;">前日予約<br><span style="font-size: 9px; color: #888;">(推奨)</span></th>
-                    <th style="text-align: right; color: #c9a063; font-size: 11px;">当日予約</th>
+                    <th>前日予約<br><span style="font-size: 9px; color: #888;">(推奨)</span></th>
+                    <th>当日予約</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>60min</th>
-                    <td>11,000円</td>
-                    <td>12,000円</td>
-                </tr>
-                <tr>
-                    <th>90min</th>
-                    <td>16,000円</td>
-                    <td>18,000円</td>
-                </tr>
-                <tr>
-                    <th>120min</th>
-                    <td>21,000円</td>
-                    <td>23,000円</td>
-                </tr>
-                <tr>
-                    <th>150min</th>
-                    <td>26,000円</td>
-                    <td>28,000円</td>
-                </tr>
+                <tr><th>60min</th><td>11,000円</td><td>12,000円</td></tr>
+                <tr><th>90min</th><td>16,000円</td><td>18,000円</td></tr>
+                <tr><th>120min</th><td>21,000円</td><td>23,000円</td></tr>
+                <tr><th>150min</th><td>26,000円</td><td>28,000円</td></tr>
             </tbody>
         </table>
 
-        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #222;">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 10px; align-items: baseline;">
-                <span style="color: #c9a063; font-size: 12px; letter-spacing: 1px;">指名料</span>
-                <span style="color: #fff; font-size: 14px;">1,000円 ～ 3,000円</span>
+        <div class="price-note-box">
+            <div class="note-row">
+                <span class="note-title">指名料</span>
+                <span class="note-price">1,000円 ～ 3,000円</span>
             </div>
-            <p style="font-size: 10px; color: #666; text-align: right; margin: -5px 0 15px 0;">※セラピストにより異なります</p>
+            <p class="note-desc">※セラピストにより異なります</p>
 
-            <div style="display: flex; justify-content: space-between; margin-bottom: 10px; align-items: baseline;">
-                <span style="color: #c9a063; font-size: 12px; letter-spacing: 1px;">延長 (30min)</span>
-                <span style="color: #fff; font-size: 14px;">6,000円</span>
+            <div class="note-row">
+                <span class="note-title">延長 (30min)</span>
+                <span class="note-price">6,000円</span>
             </div>
-            <p style="font-size: 10px; color: #666; text-align: right; margin: -5px 0 0 0;">※次の予約状況によりお受けできない場合がございます</p>
+            <p class="note-desc">※次の予約状況によりお受けできない場合がございます</p>
         </div>
     </section>
+
+    <section id="links" class="section">
+        <h3 class="section-title">LINKS</h3>
+        <div class="banner-container">
+            <div class="banner-item">
+                <a href="https://www.30baito.net/tokai/area_aichi.html" rel="nofollow" target="_blank">
+                    <img src="https://www.30baito.net/img/link/link_468x60_menesu.jpg" alt="30バイト">
+                </a>
+            </div>
+            <div class="banner-item">
+                <a href="https://momojob.net/" target="_blank"><img src="https://momojob.net/images/link/468-60.jpg" alt="ももジョブ"></a>
+            </div>
+            <div class="banner-item">
+                <a href="https://refjob.jp/" target="_blank"><img src="https://refjob.jp/lib/img/banner_46860.jpg" alt="リフラクジョブ"></a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="fixed-menu">
+    <a href="tel:080-0000-0000"><span>📞</span>CALL</a>
+    <a href="sms:080-0000-0000"><span>✉</span>SMS</a>
+    <a href="#"><span>💬</span>LINE</a>
+</div>
+
+<footer>
+    <div class="container">
+        <p>NOIR - PREMIUM MENS ESTHETIC</p>
+        <p>OPEN 10:00 - CLOSE 05:00 / EVERYDAY OPEN</p>
+        <p>&copy; 2024 NOIR All Rights Reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
