@@ -199,12 +199,11 @@
 
     <div class="container">
         <section id="news" class="section">
-            <h3 class="section-title">INFORMATION</h3>
-            <ul class="news-list">
-                <li><span class="date">MAR 25</span><span class="label">INFO</span><span>前日までのご予約で、さらなる癒しを適用中。</span></li>
-                <li><span class="date">MAR 20</span><span class="label">NEW</span><span>厳選されたセラピスト「あきな」入店いたしました。</span></li>
-            </ul>
-        </section>
+    <h3 class="section-title">INFORMATION</h3>
+    <ul class="news-list" id="news-list">
+        <p id="news-loading" style="text-align:center;">Loading information...</p>
+    </ul>
+</section>
 
         <section id="concept" class="section">
             <h3 class="section-title">CONCEPT</h3>
@@ -310,6 +309,41 @@
             <p>&copy; 2026 NOIR All Rights Reserved.</p>
         </div>
     </footer>
+<script>
+    // 先ほどデプロイしたGASのURL（/execで終わるもの）を貼り付けてください
+    const gasUrl = "https://script.google.com/macros/s/AKfycbwk2G3BjEyIRPwTU4vp_dICh_YBLwGMslElSuTpN7YG2fGSz7EghwsqmfVnv8pTmPNhbQ/exec"; 
 
+    async function fetchNews() {
+        try {
+            // sheet=お知らせ というパラメータを付けて呼び出します
+            const response = await fetch(gasUrl + "?sheet=お知らせ", { redirect: "follow" });
+            const data = await response.json();
+            
+            const newsList = document.getElementById('news-list');
+            const loading = document.getElementById('news-loading');
+            
+            let html = "";
+            // 1行目はタイトルなので i=1 から開始
+            for (let i = 1; i < data.length; i++) {
+                const [date, label, text] = data[i];
+                if (!date) continue; // 空行は飛ばす
+                
+                html += `
+                    <li>
+                        <span class="date">${date}</span>
+                        <span class="label">${label}</span>
+                        <span>${text}</span>
+                    </li>`;
+            }
+            
+            newsList.innerHTML = html;
+        } catch (error) {
+            console.error("News Fetch Error:", error);
+            document.getElementById('news-loading').innerText = "お知らせの読み込みに失敗しました。";
+        }
+    }
+
+    fetchNews();
+</script>
 </body>
 </html>
