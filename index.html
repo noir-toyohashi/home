@@ -149,10 +149,7 @@
             border: 1px solid #222;
             display: flex;
             align-items: center;
-            transition: 0.3s;
         }
-
-        .therapist-card:hover { border-color: #c9a063; }
 
         .therapist-icon {
             width: 70px;
@@ -230,13 +227,14 @@
         .note-price { color: #fff; font-size: 14px; }
         .note-desc { font-size: 10px; color: #666; text-align: right; margin-bottom: 15px; }
 
-        /* --- 7. LINKS --- */
+        /* --- 7. LINKS（トーンを落としたバナー） --- */
         .banner-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 12px;
-            opacity: 0.7;
+            gap: 15px;
+            opacity: 0.8;
+            transition: 0.5s;
         }
 
         .banner-container:hover { opacity: 1; }
@@ -245,9 +243,14 @@
             max-width: 100%;
             height: auto;
             border: 1px solid #333;
+            display: block;
+            margin: 0 auto 5px;
         }
 
-        .banner-item { margin-bottom: 10px; text-align: center; }
+        .banner-item { margin-bottom: 15px; text-align: center; width: 100%; max-width: 468px; }
+        .banner-item a { font-size: 11px; color: #888; display: inline-block; margin: 0 5px; }
+        .banner-item a:hover { color: #c9a063; }
+        .banner-subtext { display: block; font-size: 10px; color: #555; margin-top: 3px; }
 
         /* --- 8. 固定メニュー --- */
         .fixed-menu {
@@ -267,6 +270,7 @@
             color: #c9a063;
             text-align: center;
             font-size: 9px;
+            letter-spacing: 1px;
         }
 
         .fixed-menu span { display: block; font-size: 20px; margin-bottom: 3px; }
@@ -309,8 +313,8 @@
     <section id="news" class="section">
         <h3 class="section-title">INFORMATION</h3>
         <ul class="news-list">
-            <li><span class="date">MAY 25</span><span class="label">NEW</span><span>前日までのご予約で、お得な優待価格を適用中。</span></li>
-            <li><span class="date">MAY 20</span><span class="label">NEW</span><span>至高のセラピスト「あきな」入店。</span></li>
+            <li><span class="date">MAY 25</span><span class="label">NEW</span><span>前日予約優待適用。至福の時間を、より価値あるものに。</span></li>
+            <li><span class="date">MAY 20</span><span class="label">NEW</span><span>新セラピスト「あきな」入店。予約受付開始。</span></li>
         </ul>
     </section>
 
@@ -377,11 +381,64 @@
                     <img src="https://www.30baito.net/img/link/link_468x60_menesu.jpg" alt="30バイト">
                 </a>
             </div>
+
             <div class="banner-item">
                 <a href="https://momojob.net/" target="_blank"><img src="https://momojob.net/images/link/468-60.jpg" alt="ももジョブ"></a>
+                <a href="https://momojob.net/search/tokai/ar_189/" target="_blank">豊橋/豊川風俗求人</a>
+                <a href="https://momojob.net/search/tokai/ar_189/jd_32/" target="_blank">豊橋/豊川メンズエステ求人</a>
             </div>
+
             <div class="banner-item">
                 <a href="https://refjob.jp/" target="_blank"><img src="https://refjob.jp/lib/img/banner_46860.jpg" alt="リフラクジョブ"></a>
+            </div>
+
+            <div class="banner-item">
+                <a href="https://haji-s.com/tokai/area_aichi/kariya/type_industry03" rel="nofollow" target="_blank">
+                    <img src="https://haji-s.com/images/link/link_340x60.jpg" alt="はじめてのメンズエステアルバイト">
+                </a>
+            </div>
+
+            <div class="banner-item">
+                <a href="https://eslove.jp/chubu/aichi/shoplist/" target="_blank">
+                    <img src="https://eslove.jp/eslove_front_theme/banner/banner_200x40.jpg" alt="エステラブ">
+                </a>
+            </div>
+
+            <div class="banner-item">
+                <a href="http://www.esthe-de-job.com/" target="_blank">
+                    <img src="http://www.esthe-de-job.com/img/bnnr/468x60.jpg" alt="エステdeジョブ">
+                    <span class="banner-subtext">メンズエステ求人の決定版エステdeジョブ</span>
+                </a>
+            </div>
+
+            <div class="banner-item">
+                <a href="https://pafu2navi.com" rel="nofollow" target="_blank">
+                    <img src="https://pafu2navi.com/images/link/468_60.jpg" alt="ぱふぱふなび">
+                </a>
+            </div>
+
+            <div class="banner-item">
+                <a href="https://www.oremichi.com/hostbu/kantou/" rel="nofollow" target="_blank">
+                    <img src="https://www.oremichi.com/hostbu/img/link/banner_340x60_kantou.jpg" alt="俺の風ホスト部">
+                </a>
+            </div>
+            <div class="banner-item">
+                <a href="https://www.oremichi.com/kantou/" rel="nofollow" target="_blank">
+                    <img src="https://www.oremichi.com/img/link/banner_340x60_kantou.jpg" alt="俺の風">
+                </a>
+            </div>
+
+            <div class="banner-item">
+                <a href="https://www.fuzoku-job109.com/tokai/area_aichi-mikawa-toyohashi.html" rel="nofollow" target="_blank">
+                    <img src="https://www.fuzoku-job109.com/img/link/link_640x80_menesu.jpg" alt="【はじ風】で探す豊橋の求人">
+                </a>
+            </div>
+
+            <div class="banner-item">
+                <a href="https://www.fues.jp/job/tokai/ippan/top.html" target="_blank">
+                    <img src="https://www.fues.jp/upload/banners/job_200.gif" alt="週刊エステ求人"><br>
+                    <span class="banner-subtext">週刊エステ求人「東海・北陸」</span>
+                </a>
             </div>
         </div>
     </section>
