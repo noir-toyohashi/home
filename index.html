@@ -4,52 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noir（ノワール） | 豊橋の高級メンズエステ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* --- 1. 基本設定 --- */
+        /* --- 1. 基本設定（漆黒とゴールドの世界観） --- */
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: 'Noto Serif JP', serif;
+            background-color: #0a0a0a; /* 深い黒 */
+            color: #d1d1d1;
             line-height: 1.8;
             font-size: 14px;
-            padding-bottom: 70px; /* 下部固定メニュー用の余白 */
+            padding-bottom: 80px;
         }
 
         .container {
-            width: 95%;
-            max-width: 1000px;
+            width: 92%;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 10px 0;
         }
 
         a {
             text-decoration: none;
             color: inherit;
-            transition: 0.3s;
+            transition: 0.4s;
         }
 
-        /* --- 2. ヘッダー --- */
+        /* --- 2. ヘッダー（重厚なロゴエリア） --- */
         header {
-            background: #fff;
-            padding: 20px 0 0 0;
-            border-bottom: 3px solid #000;
+            background: #000;
+            padding: 40px 0 0 0;
             text-align: center;
+            border-bottom: 1px solid #444;
         }
 
         header .shop-name {
-            font-size: 32px;
-            font-weight: bold;
-            color: #000;
-            letter-spacing: 5px;
+            font-family: 'Cinzel', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: #c9a063; /* アンティークゴールド */
+            letter-spacing: 8px;
             margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         header .shop-catch {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 20px;
+            font-size: 11px;
+            color: #888;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+        }
+
+        nav {
+            background: rgba(201, 160, 99, 0.05);
         }
 
         nav ul {
@@ -58,56 +65,50 @@
             margin: 0;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #222;
         }
 
-        nav li {
-            border-right: 1px solid #eee;
-        }
+        nav li { border-right: 1px solid #222; }
 
         nav a {
             display: block;
-            padding: 12px 25px;
-            font-size: 13px;
-            font-weight: bold;
+            padding: 15px 20px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #c9a063;
         }
 
-        nav a:hover {
-            background-color: #000;
-            color: #fff;
-        }
+        nav a:hover { background: #c9a063; color: #000; }
 
-        /* --- 3. セクション共通 --- */
+        /* --- 3. セクション（ダークなボックス） --- */
         .section {
-            background: #fff;
-            padding: 30px;
-            margin-top: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            background: #111;
+            padding: 40px;
+            margin-top: 30px;
+            border: 1px solid #222;
+            position: relative;
         }
 
         .section-title {
-            font-size: 18px;
-            color: #000;
-            margin: 0 0 25px 0;
-            padding-left: 15px;
-            border-left: 5px solid #c9a063;
-            display: flex;
-            align-items: center;
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            color: #c9a063;
+            margin: 0 0 30px 0;
+            text-align: center;
+            letter-spacing: 4px;
+            display: block;
         }
 
-        .section-title::before {
+        .section-title::after {
             content: '';
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background-color: #000;
-            margin-right: 10px;
+            display: block;
+            width: 30px;
+            height: 1px;
+            background: #c9a063;
+            margin: 10px auto;
         }
 
-        /* --- 4. INFORMATION --- */
+        /* --- 4. INFORMATION（落ち着いたリスト） --- */
         .news-list {
             list-style: none;
             padding: 0;
@@ -115,116 +116,116 @@
         }
 
         .news-list li {
-            padding: 12px 0;
-            border-bottom: 1px dotted #ccc;
+            padding: 15px 0;
+            border-bottom: 1px solid #222;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .news-list .date {
-            width: 100px;
-            color: #888;
-            font-weight: bold;
-            font-size: 12px;
+            width: 90px;
+            color: #666;
+            font-family: 'Cinzel', serif;
         }
 
         .news-list .label {
-            background-color: #000;
-            color: #fff;
-            padding: 2px 8px;
-            font-size: 10px;
-            border-radius: 3px;
+            border: 1px solid #c9a063;
+            color: #c9a063;
+            padding: 1px 6px;
+            font-size: 9px;
             margin-right: 15px;
+            flex-shrink: 0;
         }
 
-        /* --- 5. THERAPIST --- */
+        /* --- 5. THERAPIST（高級感のあるカード） --- */
         .therapist-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
         }
 
         .therapist-card {
-            background: #f9f9f9;
-            padding: 20px;
-            border: 1px solid #eee;
-            border-radius: 4px;
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            padding: 25px;
+            border: 1px solid #222;
             display: flex;
             align-items: center;
+            transition: 0.3s;
         }
 
+        .therapist-card:hover { border-color: #c9a063; }
+
         .therapist-icon {
-            width: 60px;
-            height: 60px;
-            background-color: #c9a063;
-            color: #fff;
+            width: 70px;
+            height: 70px;
+            background: #000;
+            color: #c9a063;
+            border: 1px solid #c9a063;
             font-size: 24px;
-            font-weight: bold;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: 20px;
-            flex-shrink: 0;
+            box-shadow: 0 0 15px rgba(201, 160, 99, 0.2);
         }
 
         .therapist-info h4 {
             margin: 0 0 5px 0;
-            color: #000;
+            font-size: 18px;
+            color: #fff;
+            letter-spacing: 2px;
         }
 
-        .therapist-info p {
-            margin: 0;
-            font-size: 12px;
-            color: #666;
-        }
+        .therapist-info p { margin: 0; font-size: 11px; color: #888; }
 
-        /* --- 6. SYSTEM --- */
+        /* --- 6. SYSTEM（上品なテーブル） --- */
         .price-table {
             width: 100%;
             border-collapse: collapse;
         }
 
         .price-table th, .price-table td {
-            padding: 15px;
-            border-bottom: 1px solid #eee;
+            padding: 20px;
+            border-bottom: 1px solid #222;
         }
 
         .price-table th {
-            background-color: #f9f9f9;
             text-align: left;
-            width: 50%;
+            color: #888;
+            font-weight: normal;
         }
 
         .price-table td {
             text-align: right;
             color: #c9a063;
-            font-weight: bold;
-            font-size: 18px;
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
         }
 
-        /* --- 7. LINKS (バナーエリア) --- */
+        /* --- 7. LINKS（トーンを落としたバナー） --- */
         .banner-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            align-items: center;
-            text-align: center;
+            gap: 12px;
+            opacity: 0.7; /* サイトの雰囲気を壊さないよう少し薄く */
+            transition: 0.5s;
         }
+
+        .banner-container:hover { opacity: 1; }
 
         .banner-container img {
             max-width: 100%;
             height: auto;
-            border: 1px solid #eee;
-            margin-bottom: 5px;
+            border: 1px solid #333;
+            filter: grayscale(30%);
         }
 
-        .banner-item {
-            margin-bottom: 10px;
-        }
+        .banner-item { margin-bottom: 10px; text-align: center; }
+        .banner-item span { color: #555; font-size: 10px; }
 
-        /* --- 8. 下部固定メニュー (スマホ用) --- */
+        /* --- 8. 下部固定メニュー（マットブラック） --- */
         .fixed-menu {
             position: fixed;
             bottom: 0;
@@ -233,46 +234,36 @@
             background: #000;
             display: flex;
             justify-content: space-around;
-            padding: 10px 0;
+            padding: 12px 0;
             z-index: 100;
-            border-top: 2px solid #c9a063;
+            border-top: 1px solid #c9a063;
         }
 
         .fixed-menu a {
-            color: #fff;
+            color: #c9a063;
             text-align: center;
-            font-size: 10px;
-            flex: 1;
+            font-size: 9px;
+            letter-spacing: 1px;
         }
 
-        .fixed-menu span {
-            display: block;
-            font-size: 18px;
-            margin-bottom: 2px;
-        }
+        .fixed-menu span { display: block; font-size: 20px; margin-bottom: 3px; }
 
         /* --- 9. FOOTER --- */
         footer {
             text-align: center;
-            padding: 40px 0;
-            background: #fff;
-            border-top: 1px solid #ddd;
-            margin-top: 20px;
-        }
-
-        footer p {
-            margin: 5px 0;
-            font-size: 12px;
-            color: #666;
+            padding: 60px 0;
+            background: #000;
+            color: #444;
+            font-size: 10px;
+            letter-spacing: 2px;
         }
 
         /* --- スマホ調整 --- */
         @media (max-width: 600px) {
-            header .shop-name { font-size: 24px; }
-            nav a { padding: 10px; font-size: 11px; }
-            .news-list li { flex-direction: column; align-items: flex-start; }
-            .news-list .date { margin-bottom: 5px; }
-            .section { padding: 20px; }
+            header .shop-name { font-size: 30px; }
+            .section { padding: 25px 15px; }
+            nav a { padding: 12px 10px; font-size: 9px; }
+            .news-list { font-size: 12px; }
         }
     </style>
 </head>
@@ -280,8 +271,8 @@
 
 <header>
     <div class="container">
-        <div class="shop-name">Noir</div>
-        <div class="shop-catch">豊橋の高級メンズエステ - ノワール -</div>
+        <div class="shop-name">NOIR</div>
+        <div class="shop-catch">TOYOHASHI PREMIUM MENS ESTHETIC</div>
         <nav>
             <ul>
                 <li><a href="#">TOP</a></li>
@@ -297,8 +288,8 @@
     <section id="news" class="section">
         <h3 class="section-title">INFORMATION</h3>
         <ul class="news-list">
-            <li><span class="date">2024.05.20</span><span class="label">NEW</span><span>新人セラピスト入店！本日より受付開始です。</span></li>
-            <li><span class="date">2024.05.15</span><span class="label">SALE</span><span>期間限定：初回1,000円割引実施中！</span></li>
+            <li><span class="date">MAY 20</span><span class="label">NEW</span><span>選ばれし至高のセラピスト「あきな」入店。</span></li>
+            <li><span class="date">MAY 15</span><span class="label">SALE</span><span>First Time Offer：初回限定のご優待案内。</span></li>
         </ul>
     </section>
 
@@ -306,19 +297,19 @@
         <h3 class="section-title">THERAPIST</h3>
         <div class="therapist-grid">
             <div class="therapist-card">
-                <div class="therapist-icon">あ</div>
+                <div class="therapist-icon">A</div>
                 <div class="therapist-info">
                     <h4>あきな</h4>
-                    <p>新人 / 22歳 / 清楚系</p>
-                    <p>出勤：10:00 - 18:00</p>
+                    <p>22歳 / 清楚・エレガント</p>
+                    <p>Schedule：10:00 - 18:00</p>
                 </div>
             </div>
             <div class="therapist-card">
-                <div class="therapist-icon">は</div>
+                <div class="therapist-icon">H</div>
                 <div class="therapist-info">
                     <h4>はるか</h4>
-                    <p>24歳 / 癒やし系 / スタイル抜群</p>
-                    <p>出勤：13:00 - 21:00</p>
+                    <p>24歳 / 妖艶・ラグジュアリー</p>
+                    <p>Schedule：13:00 - 21:00</p>
                 </div>
             </div>
         </div>
@@ -327,9 +318,9 @@
     <section id="system" class="section">
         <h3 class="section-title">SYSTEM</h3>
         <table class="price-table">
-            <tr><th>60分コース</th><td>10,000円</td></tr>
-            <tr><th>90分コース</th><td>14,000円</td></tr>
-            <tr><th>120分コース</th><td>18,000円</td></tr>
+            <tr><th>Standard (60min)</th><td>¥10,000</td></tr>
+            <tr><th>Premium (90min)</th><td>¥14,000</td></tr>
+            <tr><th>Executive (120min)</th><td>¥18,000</td></tr>
         </table>
     </section>
 
@@ -338,12 +329,12 @@
         <div class="banner-container">
             <div class="banner-item">
                 <a href="https://www.30baito.net/tokai/area_aichi.html" rel="nofollow" target="_blank">
-                    <img src="https://www.30baito.net/img/link/link_468x60_menesu.jpg" alt="30バイト" border="0">
+                    <img src="https://www.30baito.net/img/link/link_468x60_menesu.jpg" alt="30バイト">
                 </a>
             </div>
             <div class="banner-item">
                 <a href="https://momojob.net/" target="_blank"><img src="https://momojob.net/images/link/468-60.jpg" alt="ももジョブ"></a><br>
-                <a href="https://momojob.net/search/tokai/ar_189/" target="_blank" style="font-size:11px;">豊橋/豊川風俗求人</a>　<a href="https://momojob.net/search/tokai/ar_189/jd_32/" target="_blank" style="font-size:11px;">豊橋/豊川メンズエステ求人</a>
+                <span>豊橋/豊川メンズエステ求人</span>
             </div>
             <div class="banner-item">
                 <a href="https://refjob.jp/" target="_blank"><img src="https://refjob.jp/lib/img/banner_46860.jpg" alt="リフラクジョブ"></a>
@@ -354,36 +345,21 @@
             <div class="banner-item">
                 <a href="https://eslove.jp/chubu/aichi/shoplist/" target="_blank"><img src="https://eslove.jp/eslove_front_theme/banner/banner_200x40.jpg" alt="エステラブ"></a>
             </div>
-            <div class="banner-item">
-                <a href="http://www.esthe-de-job.com/" target="_blank"><img src="http://www.esthe-de-job.com/img/bnnr/468x60.jpg" alt="エステdeジョブ"><br><span style="font-size:11px;color:#666;">エステdeジョブ</span></a>
-            </div>
-            <div class="banner-item">
-                <a href="https://pafu2navi.com" target="_blank"><img src="https://pafu2navi.com/images/link/468_60.jpg" alt="ぱふぱふなび"></a>
-            </div>
-            <div class="banner-item">
-                <a href="https://www.oremichi.com/kantou/" target="_blank"><img src="https://www.oremichi.com/img/link/banner_340x60_kantou.jpg" alt="俺の風"></a>
-            </div>
-            <div class="banner-item">
-                <a href="https://www.fuzoku-job109.com/tokai/area_aichi-mikawa-toyohashi.html" target="_blank"><img src="https://www.fuzoku-job109.com/img/link/link_640x80_menesu.jpg" alt="はじ風"></a>
-            </div>
-            <div class="banner-item">
-                <a href="https://www.fues.jp/job/tokai/ippan/top.html" target="_blank"><img src="https://www.fues.jp/upload/banners/job_200.gif" alt="週刊エステ求人"></a>
-            </div>
         </div>
     </section>
 </div>
 
 <div class="fixed-menu">
-    <a href="tel:000-0000-0000"><span>📞</span>電話予約</a>
-    <a href="sms:000-0000-0000"><span>✉</span>SMS予約</a>
-    <a href="#"><span>💬</span>LINE予約</a>
+    <a href="tel:000-0000-0000"><span>📞</span>CALL</a>
+    <a href="sms:000-0000-0000"><span>✉</span>SMS</a>
+    <a href="#"><span>💬</span>LINE</a>
 </div>
 
 <footer>
     <div class="container">
-        <p><strong>Noir - ノワール -</strong></p>
-        <p>営業時間：10:00 ～ 翌5:00 / 年中無休</p>
-        <p>&copy; 2024 Noir All Rights Reserved.</p>
+        <p>NOIR - PREMIUM MENS ESTHETIC</p>
+        <p>OPEN 10:00 - CLOSE 05:00 / EVERYDAY OPEN</p>
+        <p>&copy; 2024 NOIR All Rights Reserved.</p>
     </div>
 </footer>
 
