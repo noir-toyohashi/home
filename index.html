@@ -30,10 +30,10 @@
             transition: 0.4s;
         }
 
-        /* --- 2. ヘッダー画像設定（ここを調整しました） --- */
+        /* --- 2. ヘッダー画像設定 --- */
         .header-banner {
             width: 100%;
-            line-height: 0; /* 下にできる謎の隙間を解消 */
+            line-height: 0;
             overflow: hidden;
             background-color: #000;
         }
@@ -42,19 +42,19 @@
             width: 100%;
             height: auto;
             display: block;
-            object-fit: contain; /* アスペクト比を維持 */
+            object-fit: contain;
         }
 
         header {
             background: #000;
-            padding: 20px 0 0 0; /* バナーがあるため上の余白を少し調整 */
+            padding: 20px 0 0 0;
             text-align: center;
             border-bottom: 1px solid #444;
         }
 
         header .shop-name {
             font-family: 'Cinzel', serif;
-            font-size: 32px; /* バナーとのバランスを見て少し縮小 */
+            font-size: 32px;
             font-weight: 700;
             color: #c9a063;
             letter-spacing: 8px;
@@ -134,6 +134,16 @@
         .therapist-info h4 { margin: 0 0 5px 0; font-size: 18px; color: #fff; }
         .therapist-info p { margin: 0; font-size: 11px; color: #888; }
 
+        /* 店長コメント専用のスタイル */
+        .manager-comment {
+            margin-top: 5px !important;
+            font-size: 10px !important;
+            color: #888 !important;
+            line-height: 1.4 !important;
+            border-top: 1px solid #222;
+            padding-top: 5px;
+        }
+
         .price-table { width: 100%; border-collapse: collapse; }
         .price-table th, .price-table td { padding: 15px 10px; border-bottom: 1px solid #222; }
         .price-table thead th { text-align: right; color: #c9a063; font-size: 11px; }
@@ -199,11 +209,11 @@
 
     <div class="container">
         <section id="news" class="section">
-    <h3 class="section-title">INFORMATION</h3>
-    <ul class="news-list" id="news-list">
-        <p id="news-loading" style="text-align:center;">Loading information...</p>
-    </ul>
-</section>
+            <h3 class="section-title">INFORMATION</h3>
+            <ul class="news-list" id="news-list">
+                <p id="news-loading" style="text-align:center;">Loading information...</p>
+            </ul>
+        </section>
 
         <section id="concept" class="section">
             <h3 class="section-title">CONCEPT</h3>
@@ -219,22 +229,15 @@
 
         <section id="therapist" class="section">
             <h3 class="section-title">THERAPIST</h3>
-            <div class="therapist-grid">
-                <div class="therapist-card">
-                    <div class="therapist-icon">A</div>
-                    <div class="therapist-info"><h4>あきな</h4><p>22歳 / 清楚系 / 10:00 - 18:00</p></div>
-                </div>
-                <div class="therapist-card">
-                    <div class="therapist-icon">H</div>
-                    <div class="therapist-info"><h4>はるか</h4><p>24歳 / 妖艶系 / 13:00 - 21:00</p></div>
-                </div>
+            <div class="therapist-grid" id="therapist-list">
+                <p id="therapist-loading" style="text-align:center; width:100%;">Loading therapists...</p>
             </div>
             <div style="text-align: center; margin-top: 30px;">
-    <a href="schedule.html" style="display: inline-block; padding: 15px 40px; border: 1px solid #c9a063; color: #c9a063; font-family: 'Cinzel', serif; letter-spacing: 2px; font-size: 12px; transition: 0.3s;">
-        VIEW WEEKLY SCHEDULE<br>
-        <span style="font-family: 'Noto Serif JP', serif; font-size: 10px;">週間スケジュールはコチラ</span>
-    </a>
-</div>
+                <a href="schedule.html" style="display: inline-block; padding: 15px 40px; border: 1px solid #c9a063; color: #c9a063; font-family: 'Cinzel', serif; letter-spacing: 2px; font-size: 12px; transition: 0.3s;">
+                    VIEW WEEKLY SCHEDULE<br>
+                    <span style="font-family: 'Noto Serif JP', serif; font-size: 10px;">週間スケジュールはコチラ</span>
+                </a>
+            </div>
         </section>
 
         <section id="system" class="section">
@@ -309,41 +312,70 @@
             <p>&copy; 2026 NOIR All Rights Reserved.</p>
         </div>
     </footer>
-<script>
-    // 先ほどデプロイしたGASのURL（/execで終わるもの）を貼り付けてください
-    const gasUrl = "https://script.google.com/macros/s/AKfycbwk2G3BjEyIRPwTU4vp_dICh_YBLwGMslElSuTpN7YG2fGSz7EghwsqmfVnv8pTmPNhbQ/exec"; 
 
-    async function fetchNews() {
-        try {
-            // sheet=お知らせ というパラメータを付けて呼び出します
-            const response = await fetch(gasUrl + "?sheet=お知らせ", { redirect: "follow" });
-            const data = await response.json();
-            
-            const newsList = document.getElementById('news-list');
-            const loading = document.getElementById('news-loading');
-            
-            let html = "";
-            // 1行目はタイトルなので i=1 から開始
-            for (let i = 1; i < data.length; i++) {
-                const [date, label, text] = data[i];
-                if (!date) continue; // 空行は飛ばす
+    <script>
+        const gasUrl = "https://script.google.com/macros/s/AKfycbwk2G3BjEyIRPwTU4vp_dICh_YBLwGMslElSuTpN7YG2fGSz7EghwsqmfVnv8pTmPNhbQ/exec"; 
+
+        // 1. お知らせの取得
+        async function fetchNews() {
+            try {
+                const response = await fetch(gasUrl + "?sheet=お知らせ", { redirect: "follow" });
+                const data = await response.json();
+                const newsList = document.getElementById('news-list');
+                const loading = document.getElementById('news-loading');
                 
-                html += `
-                    <li>
-                        <span class="date">${date}</span>
-                        <span class="label">${label}</span>
-                        <span>${text}</span>
-                    </li>`;
+                let html = "";
+                for (let i = 1; i < data.length; i++) {
+                    const [date, label, text] = data[i];
+                    if (!date) continue;
+                    html += `
+                        <li>
+                            <span class="date">${date}</span>
+                            <span class="label">${label}</span>
+                            <span>${text}</span>
+                        </li>`;
+                }
+                newsList.innerHTML = html;
+                if (loading) loading.style.display = 'none';
+            } catch (error) {
+                console.error("News Fetch Error:", error);
+                document.getElementById('news-loading').innerText = "お知らせの読み込みに失敗しました。";
             }
-            
-            newsList.innerHTML = html;
-        } catch (error) {
-            console.error("News Fetch Error:", error);
-            document.getElementById('news-loading').innerText = "お知らせの読み込みに失敗しました。";
         }
-    }
 
-    fetchNews();
-</script>
+        // 2. セラピストの取得
+        async function fetchTherapists() {
+            try {
+                const response = await fetch(gasUrl + "?sheet=セラピスト", { redirect: "follow" });
+                const data = await response.json();
+                const list = document.getElementById('therapist-list');
+                const loading = document.getElementById('therapist-loading');
+                
+                let html = "";
+                for (let i = 1; i < data.length; i++) {
+                    const [icon, name, catchCopy, comment] = data[i];
+                    if (!name) continue;
+                    html += `
+                        <div class="therapist-card">
+                            <div class="therapist-icon">${icon}</div>
+                            <div class="therapist-info">
+                                <h4>${name}</h4>
+                                <p>${catchCopy}</p>
+                                <p class="manager-comment">店長より：${comment || "準備中"}</p>
+                            </div>
+                        </div>`;
+                }
+                list.innerHTML = html;
+                if (loading) loading.style.display = 'none';
+            } catch (error) {
+                console.error("Therapist Fetch Error:", error);
+                document.getElementById('therapist-loading').innerText = "セラピスト情報の読み込みに失敗しました。";
+            }
+        }
+
+        // 実行
+        fetchNews();
+        fetchTherapists();
+    </script>
 </body>
 </html>
