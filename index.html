@@ -6,12 +6,12 @@
     <title>Noir（ノワール） | 豊橋の高級メンズエステ</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* --- 1. 基本設定 --- */
+        /* --- 1. 基本設定（漆黒とゴールドの世界観） --- */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Noto Serif JP', serif;
-            background-color: #0a0a0a;
+            background-color: #0a0a0a; /* 深い黒 */
             color: #d1d1d1;
             line-height: 1.8;
             font-size: 14px;
@@ -69,7 +69,6 @@
         }
 
         nav li { border-right: 1px solid #222; }
-
         nav a {
             display: block;
             padding: 15px 20px;
@@ -77,7 +76,6 @@
             letter-spacing: 2px;
             color: #c9a063;
         }
-
         nav a:hover { background: #c9a063; color: #000; }
 
         /* --- 3. セクション共通 --- */
@@ -108,25 +106,14 @@
         }
 
         /* --- 4. INFORMATION --- */
-        .news-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
+        .news-list { list-style: none; padding: 0; margin: 0; }
         .news-list li {
             padding: 15px 0;
             border-bottom: 1px solid #222;
             display: flex;
             align-items: flex-start;
         }
-
-        .news-list .date {
-            width: 90px;
-            color: #666;
-            font-family: 'Cinzel', serif;
-        }
-
+        .news-list .date { width: 90px; color: #666; font-family: 'Cinzel', serif; }
         .news-list .label {
             border: 1px solid #c9a063;
             color: #c9a063;
@@ -142,7 +129,6 @@
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
-
         .therapist-card {
             background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
             padding: 25px;
@@ -150,7 +136,6 @@
             display: flex;
             align-items: center;
         }
-
         .therapist-icon {
             width: 70px;
             height: 70px;
@@ -163,104 +148,34 @@
             align-items: center;
             justify-content: center;
             margin-right: 20px;
-            box-shadow: 0 0 15px rgba(201, 160, 99, 0.2);
         }
-
-        .therapist-info h4 {
-            margin: 0 0 5px 0;
-            font-size: 18px;
-            color: #fff;
-            letter-spacing: 2px;
-        }
-
+        .therapist-info h4 { margin: 0 0 5px 0; font-size: 18px; color: #fff; }
         .therapist-info p { margin: 0; font-size: 11px; color: #888; }
 
         /* --- 6. SYSTEM --- */
-        .price-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .price-table th, .price-table td {
-            padding: 15px 10px;
-            border-bottom: 1px solid #222;
-        }
-
-        .price-table thead th {
-            text-align: right;
-            color: #c9a063;
-            font-size: 11px;
-            letter-spacing: 1px;
-        }
-
+        .price-table { width: 100%; border-collapse: collapse; }
+        .price-table th, .price-table td { padding: 15px 10px; border-bottom: 1px solid #222; }
+        .price-table thead th { text-align: right; color: #c9a063; font-size: 11px; }
         .price-table thead th:first-child { text-align: left; }
+        .price-table tbody th { text-align: left; color: #fff; font-family: 'Cinzel', serif; font-size: 16px; font-weight: normal; }
+        .price-table td { text-align: right; color: #c9a063; font-family: 'Cinzel', serif; font-size: 18px; }
 
-        .price-table tbody th {
-            text-align: left;
-            color: #fff;
-            font-weight: normal;
-            font-family: 'Cinzel', serif;
-            font-size: 16px;
-        }
-
-        .price-table td {
-            text-align: right;
-            color: #c9a063;
-            font-family: 'Cinzel', serif;
-            font-size: 18px;
-        }
-
-        .price-note-box {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #222;
-        }
-
-        .note-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-            align-items: baseline;
-        }
-
-        .note-title { color: #c9a063; font-size: 12px; letter-spacing: 1px; }
+        .price-note-box { margin-top: 30px; padding-top: 20px; border-top: 1px solid #222; }
+        .note-row { display: flex; justify-content: space-between; margin-bottom: 5px; align-items: baseline; }
+        .note-title { color: #c9a063; font-size: 12px; }
         .note-price { color: #fff; font-size: 14px; }
         .note-desc { font-size: 10px; color: #666; text-align: right; margin-bottom: 15px; }
 
         /* --- 7. AREA & ACCESS --- */
-        .access-box {
-            border-bottom: 1px solid #222;
-            padding-bottom: 20px;
-            margin-bottom: 25px;
-        }
+        .access-box { border-bottom: 1px solid #222; padding-bottom: 20px; margin-bottom: 25px; }
         .access-box:last-child { border-bottom: none; margin-bottom: 0; }
-
-        .access-header {
-            color: #c9a063;
-            font-size: 13px;
-            border-left: 3px solid #c9a063;
-            padding-left: 10px;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-
-        .hotel-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 10px;
-        }
+        .access-header { color: #c9a063; font-size: 13px; border-left: 3px solid #c9a063; padding-left: 10px; margin-bottom: 15px; }
+        .hotel-item { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
         .hotel-name { color: #fff; font-weight: bold; }
         .hotel-price { color: #888; font-size: 12px; }
-        .map-link {
-            display: block;
-            font-size: 11px;
-            color: #c9a063;
-            margin-top: 5px;
-            text-decoration: underline;
-        }
+        .map-link { font-size: 11px; color: #c9a063; text-decoration: underline; margin-top: 5px; display: inline-block; }
 
-        /* --- 8. LINKS --- */
+        /* --- 8. LINKS (全10種バナー) --- */
         .banner-container {
             display: flex;
             flex-wrap: wrap;
@@ -269,20 +184,12 @@
             opacity: 0.8;
             transition: 0.5s;
         }
-
         .banner-container:hover { opacity: 1; }
-
-        .banner-container img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #333;
-            display: block;
-            margin: 0 auto 5px;
-        }
-
-        .banner-item { margin-bottom: 15px; text-align: center; width: 100%; max-width: 468px; }
-        .banner-item a { font-size: 11px; color: #888; display: inline-block; margin: 0 5px; }
-        .banner-subtext { display: block; font-size: 10px; color: #555; margin-top: 3px; }
+        .banner-item { margin-bottom: 20px; text-align: center; width: 100%; max-width: 468px; }
+        .banner-item img { max-width: 100%; height: auto; border: 1px solid #333; margin-bottom: 5px; }
+        .banner-text-links { font-size: 11px; color: #888; }
+        .banner-text-links a { margin: 0 5px; text-decoration: underline; }
+        .banner-sub { display: block; font-size: 10px; color: #555; margin-top: 3px; }
 
         /* --- 9. 固定メニュー --- */
         .fixed-menu {
@@ -297,19 +204,11 @@
             z-index: 100;
             border-top: 1px solid #c9a063;
         }
-
         .fixed-menu a { color: #c9a063; text-align: center; font-size: 9px; }
         .fixed-menu span { display: block; font-size: 20px; margin-bottom: 3px; }
 
         /* --- 10. FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 60px 0;
-            background: #000;
-            color: #444;
-            font-size: 10px;
-            letter-spacing: 2px;
-        }
+        footer { text-align: center; padding: 60px 0; background: #000; color: #444; font-size: 10px; letter-spacing: 2px; }
 
         @media (max-width: 600px) {
             header .shop-name { font-size: 30px; }
@@ -329,6 +228,7 @@
                 <li><a href="#therapist">THERAPIST</a></li>
                 <li><a href="#system">SYSTEM</a></li>
                 <li><a href="#access">ACCESS</a></li>
+                <li><a href="#links">LINKS</a></li>
             </ul>
         </nav>
     </div>
@@ -338,8 +238,8 @@
     <section id="news" class="section">
         <h3 class="section-title">INFORMATION</h3>
         <ul class="news-list">
-            <li><span class="date">MAY 25</span><span class="label">NEW</span><span>前日までのご予約で優待価格を適用中。</span></li>
-            <li><span class="date">MAY 20</span><span class="label">NEW</span><span>至高のセラピスト「あきな」入店。</span></li>
+            <li><span class="date">MAR 25</span><span class="label">NEW</span><span>前日予約で最大2,000円OFF。特別な夜をご提案します。</span></li>
+            <li><span class="date">MAR 20</span><span class="label">NEW</span><span>新セラピスト「あきな」入店。</span></li>
         </ul>
     </section>
 
@@ -348,19 +248,11 @@
         <div class="therapist-grid">
             <div class="therapist-card">
                 <div class="therapist-icon">A</div>
-                <div class="therapist-info">
-                    <h4>あきな</h4>
-                    <p>新人 / 清楚・エレガント</p>
-                    <p>Schedule：10:00 - 18:00</p>
-                </div>
+                <div class="therapist-info"><h4>あきな</h4><p>22歳 / 清楚系 / 10:00 - 18:00</p></div>
             </div>
             <div class="therapist-card">
                 <div class="therapist-icon">H</div>
-                <div class="therapist-info">
-                    <h4>はるか</h4>
-                    <p>妖艶・ラグジュアリー</p>
-                    <p>Schedule：13:00 - 21:00</p>
-                </div>
+                <div class="therapist-info"><h4>はるか</h4><p>24歳 / 妖艶系 / 13:00 - 21:00</p></div>
             </div>
         </div>
     </section>
@@ -369,11 +261,7 @@
         <h3 class="section-title">SYSTEM</h3>
         <table class="price-table">
             <thead>
-                <tr style="border-bottom: 2px solid #c9a063;">
-                    <th style="color: #c9a063; font-size: 11px; letter-spacing: 2px;">COURSE</th>
-                    <th>前日予約<br><span style="font-size: 9px; color: #888;">(推奨)</span></th>
-                    <th>当日予約</th>
-                </tr>
+                <tr><th>COURSE</th><th>前日予約</th><th>当日予約</th></tr>
             </thead>
             <tbody>
                 <tr><th>60min</th><td>11,000円</td><td>12,000円</td></tr>
@@ -382,49 +270,32 @@
                 <tr><th>150min</th><td>26,000円</td><td>28,000円</td></tr>
             </tbody>
         </table>
-
         <div class="price-note-box">
             <div class="note-row"><span class="note-title">指名料</span><span class="note-price">1,000円 ～ 3,000円</span></div>
             <p class="note-desc">※セラピストにより異なります</p>
             <div class="note-row"><span class="note-title">延長 (30min)</span><span class="note-price">6,000円</span></div>
-            <p class="note-desc">※次の予約状況によりお受けできない場合がございます</p>
+            <p class="note-desc">※予約状況によりお受けできない場合がございます</p>
         </div>
     </section>
 
     <section id="access" class="section">
         <h3 class="section-title">AREA & ACCESS</h3>
-        <div style="font-size: 11px; color: #fff; text-align: center; margin-bottom: 25px; letter-spacing: 1px;">
-            提携ホテルをご利用のお客様は、交通費無料にて承ります。
-        </div>
-
         <div class="access-box">
             <div class="access-header">提携ホテル（交通費無料）</div>
             <div class="hotel-item">
-                <div>
-                    <span class="hotel-name">豊橋ラフォーレ</span><br>
-                    <a href="#" class="map-link">📍 Googleマップで確認する</a>
-                </div>
-                <span class="hotel-price">ホテル利用料 4,500円</span>
+                <div><span class="hotel-name">豊橋ラフォーレ</span><br><a href="#" class="map-link">Googleマップで確認</a></div>
+                <span class="hotel-price">利用料 4,500円</span>
             </div>
             <div class="hotel-item">
-                <div>
-                    <span class="hotel-name">豊橋ユアーズ</span><br>
-                    <a href="#" class="map-link">📍 Googleマップで確認する</a>
-                </div>
-                <span class="hotel-price">ホテル利用料 5,500円</span>
+                <div><span class="hotel-name">豊橋ユアーズ</span><br><a href="#" class="map-link">Googleマップで確認</a></div>
+                <span class="hotel-price">利用料 5,500円</span>
             </div>
         </div>
-
         <div class="access-box">
             <div class="access-header">その他エリア（交通費）</div>
             <div class="hotel-item"><span class="hotel-name">豊橋市内</span><span class="hotel-price">1,000円</span></div>
-            <div class="hotel-item"><span class="hotel-name">豊川市・田原市・蒲郡市</span><span class="hotel-price">2,000円</span></div>
-            <div class="hotel-item"><span class="hotel-name">岡崎市・浜松市</span><span class="hotel-price">3,000円</span></div>
-        </div>
-
-        <div style="margin-top: 20px; font-size: 10px; color: #888; border-top: 1px solid #222; padding-top: 15px;">
-            ※ホテル料金はお客様負担となります。<br>
-            ※自宅への派遣は行っておりません。
+            <div class="hotel-item"><span class="hotel-name">豊川・田原・蒲郡</span><span class="hotel-price">2,000円</span></div>
+            <div class="hotel-item"><span class="hotel-name">岡崎・浜松</span><span class="hotel-price">3,000円</span></div>
         </div>
     </section>
 
@@ -432,20 +303,48 @@
         <h3 class="section-title">LINKS</h3>
         <div class="banner-container">
             <div class="banner-item">
-                <a href="https://www.30baito.net/tokai/area_aichi.html" target="_blank">
+                <a href="https://www.30baito.net/tokai/area_aichi.html" rel="nofollow" target="_blank">
                     <img src="https://www.30baito.net/img/link/link_468x60_menesu.jpg" alt="30バイト">
                 </a>
             </div>
             <div class="banner-item">
-                <a href="https://momojob.net/" target="_blank"><img src="https://momojob.net/images/link/468-60.jpg" alt="ももジョブ"></a><br>
-                <a href="https://momojob.net/search/tokai/ar_189/" target="_blank">豊橋/豊川風俗求人</a>
+                <a href="https://momojob.net/" target="_blank"><img src="https://momojob.net/images/link/468-60.jpg" alt="ももジョブ"></a>
+                <div class="banner-text-links">
+                    <a href="https://momojob.net/search/tokai/ar_189/" target="_blank">豊橋/豊川風俗求人</a>
+                    <a href="https://momojob.net/search/tokai/ar_189/jd_32/" target="_blank">豊橋/豊川メンズエステ求人</a>
+                </div>
             </div>
             <div class="banner-item">
                 <a href="https://refjob.jp/" target="_blank"><img src="https://refjob.jp/lib/img/banner_46860.jpg" alt="リフラクジョブ"></a>
             </div>
             <div class="banner-item">
+                <a href="https://haji-s.com/tokai/area_aichi/kariya/type_industry03" rel="nofollow" target="_blank">
+                    <img src="https://haji-s.com/images/link/link_340x60.jpg" alt="はじめてのメンズエステアルバイト">
+                </a>
+            </div>
+            <div class="banner-item">
+                <a href="https://eslove.jp/chubu/aichi/shoplist/" target="_blank"><img src="https://eslove.jp/eslove_front_theme/banner/banner_200x40.jpg" alt="エステラブ"></a>
+            </div>
+            <div class="banner-item">
                 <a href="http://www.esthe-de-job.com/" target="_blank">
                     <img src="http://www.esthe-de-job.com/img/bnnr/468x60.jpg" alt="エステdeジョブ">
+                    <span class="banner-sub">メンズエステ求人の決定版エステdeジョブ</span>
+                </a>
+            </div>
+            <div class="banner-item">
+                <a href="https://pafu2navi.com" rel="nofollow" target="_blank"><img src="https://pafu2navi.com/images/link/468_60.jpg" alt="ぱふぱふなび"></a>
+            </div>
+            <div class="banner-item">
+                <a href="https://www.oremichi.com/hostbu/kantou/" rel="nofollow" target="_blank"><img src="https://www.oremichi.com/hostbu/img/link/banner_340x60_kantou.jpg" alt="俺の風ホスト部"></a>
+                <a href="https://www.oremichi.com/kantou/" rel="nofollow" target="_blank"><img src="https://www.oremichi.com/img/link/banner_340x60_kantou.jpg" alt="俺の風"></a>
+            </div>
+            <div class="banner-item">
+                <a href="https://www.fuzoku-job109.com/tokai/area_aichi-mikawa-toyohashi.html" rel="nofollow" target="_blank"><img src="https://www.fuzoku-job109.com/img/link/link_640x80_menesu.jpg" alt="はじ風"></a>
+            </div>
+            <div class="banner-item">
+                <a href="https://www.fues.jp/job/tokai/ippan/top.html" target="_blank">
+                    <img src="https://www.fues.jp/upload/banners/job_200.gif" alt="週刊エステ求人">
+                    <span class="banner-sub">週刊エステ求人「東海・北陸」</span>
                 </a>
             </div>
         </div>
