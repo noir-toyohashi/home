@@ -6,12 +6,12 @@
     <title>Noir（ノワール） | 豊橋の高級メンズエステ</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* --- 1. 基本設定（漆黒とゴールドの世界観） --- */
+        /* --- 1. 基本設定 --- */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Noto Serif JP', serif;
-            background-color: #0a0a0a; /* 深い黒 */
+            background-color: #0a0a0a;
             color: #d1d1d1;
             line-height: 1.8;
             font-size: 14px;
@@ -42,7 +42,7 @@
             font-family: 'Cinzel', serif;
             font-size: 42px;
             font-weight: 700;
-            color: #c9a063; /* アンティークゴールド */
+            color: #c9a063;
             letter-spacing: 8px;
             margin-bottom: 5px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
@@ -175,7 +175,7 @@
 
         .therapist-info p { margin: 0; font-size: 11px; color: #888; }
 
-        /* --- 6. SYSTEM（前日・当日料金テーブル） --- */
+        /* --- 6. SYSTEM --- */
         .price-table {
             width: 100%;
             border-collapse: collapse;
@@ -227,7 +227,40 @@
         .note-price { color: #fff; font-size: 14px; }
         .note-desc { font-size: 10px; color: #666; text-align: right; margin-bottom: 15px; }
 
-        /* --- 7. LINKS（トーンを落としたバナー） --- */
+        /* --- 7. AREA & ACCESS --- */
+        .access-box {
+            border-bottom: 1px solid #222;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+        .access-box:last-child { border-bottom: none; margin-bottom: 0; }
+
+        .access-header {
+            color: #c9a063;
+            font-size: 13px;
+            border-left: 3px solid #c9a063;
+            padding-left: 10px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .hotel-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .hotel-name { color: #fff; font-weight: bold; }
+        .hotel-price { color: #888; font-size: 12px; }
+        .map-link {
+            display: block;
+            font-size: 11px;
+            color: #c9a063;
+            margin-top: 5px;
+            text-decoration: underline;
+        }
+
+        /* --- 8. LINKS --- */
         .banner-container {
             display: flex;
             flex-wrap: wrap;
@@ -249,10 +282,9 @@
 
         .banner-item { margin-bottom: 15px; text-align: center; width: 100%; max-width: 468px; }
         .banner-item a { font-size: 11px; color: #888; display: inline-block; margin: 0 5px; }
-        .banner-item a:hover { color: #c9a063; }
         .banner-subtext { display: block; font-size: 10px; color: #555; margin-top: 3px; }
 
-        /* --- 8. 固定メニュー --- */
+        /* --- 9. 固定メニュー --- */
         .fixed-menu {
             position: fixed;
             bottom: 0;
@@ -266,16 +298,10 @@
             border-top: 1px solid #c9a063;
         }
 
-        .fixed-menu a {
-            color: #c9a063;
-            text-align: center;
-            font-size: 9px;
-            letter-spacing: 1px;
-        }
-
+        .fixed-menu a { color: #c9a063; text-align: center; font-size: 9px; }
         .fixed-menu span { display: block; font-size: 20px; margin-bottom: 3px; }
 
-        /* --- 9. FOOTER --- */
+        /* --- 10. FOOTER --- */
         footer {
             text-align: center;
             padding: 60px 0;
@@ -288,7 +314,6 @@
         @media (max-width: 600px) {
             header .shop-name { font-size: 30px; }
             .section { padding: 25px 15px; }
-            .price-table td { font-size: 16px; }
         }
     </style>
 </head>
@@ -303,7 +328,7 @@
                 <li><a href="#">TOP</a></li>
                 <li><a href="#therapist">THERAPIST</a></li>
                 <li><a href="#system">SYSTEM</a></li>
-                <li><a href="#links">LINKS</a></li>
+                <li><a href="#access">ACCESS</a></li>
             </ul>
         </nav>
     </div>
@@ -313,8 +338,8 @@
     <section id="news" class="section">
         <h3 class="section-title">INFORMATION</h3>
         <ul class="news-list">
-            <li><span class="date">MAY 25</span><span class="label">NEW</span><span>前日予約優待適用。至福の時間を、より価値あるものに。</span></li>
-            <li><span class="date">MAY 20</span><span class="label">NEW</span><span>新セラピスト「あきな」入店。予約受付開始。</span></li>
+            <li><span class="date">MAY 25</span><span class="label">NEW</span><span>前日までのご予約で優待価格を適用中。</span></li>
+            <li><span class="date">MAY 20</span><span class="label">NEW</span><span>至高のセラピスト「あきな」入店。</span></li>
         </ul>
     </section>
 
@@ -359,17 +384,47 @@
         </table>
 
         <div class="price-note-box">
-            <div class="note-row">
-                <span class="note-title">指名料</span>
-                <span class="note-price">1,000円 ～ 3,000円</span>
-            </div>
+            <div class="note-row"><span class="note-title">指名料</span><span class="note-price">1,000円 ～ 3,000円</span></div>
             <p class="note-desc">※セラピストにより異なります</p>
-
-            <div class="note-row">
-                <span class="note-title">延長 (30min)</span>
-                <span class="note-price">6,000円</span>
-            </div>
+            <div class="note-row"><span class="note-title">延長 (30min)</span><span class="note-price">6,000円</span></div>
             <p class="note-desc">※次の予約状況によりお受けできない場合がございます</p>
+        </div>
+    </section>
+
+    <section id="access" class="section">
+        <h3 class="section-title">AREA & ACCESS</h3>
+        <div style="font-size: 11px; color: #fff; text-align: center; margin-bottom: 25px; letter-spacing: 1px;">
+            提携ホテルをご利用のお客様は、交通費無料にて承ります。
+        </div>
+
+        <div class="access-box">
+            <div class="access-header">提携ホテル（交通費無料）</div>
+            <div class="hotel-item">
+                <div>
+                    <span class="hotel-name">豊橋ラフォーレ</span><br>
+                    <a href="#" class="map-link">📍 Googleマップで確認する</a>
+                </div>
+                <span class="hotel-price">ホテル利用料 4,500円</span>
+            </div>
+            <div class="hotel-item">
+                <div>
+                    <span class="hotel-name">豊橋ユアーズ</span><br>
+                    <a href="#" class="map-link">📍 Googleマップで確認する</a>
+                </div>
+                <span class="hotel-price">ホテル利用料 5,500円</span>
+            </div>
+        </div>
+
+        <div class="access-box">
+            <div class="access-header">その他エリア（交通費）</div>
+            <div class="hotel-item"><span class="hotel-name">豊橋市内</span><span class="hotel-price">1,000円</span></div>
+            <div class="hotel-item"><span class="hotel-name">豊川市・田原市・蒲郡市</span><span class="hotel-price">2,000円</span></div>
+            <div class="hotel-item"><span class="hotel-name">岡崎市・浜松市</span><span class="hotel-price">3,000円</span></div>
+        </div>
+
+        <div style="margin-top: 20px; font-size: 10px; color: #888; border-top: 1px solid #222; padding-top: 15px;">
+            ※ホテル料金はお客様負担となります。<br>
+            ※自宅への派遣は行っておりません。
         </div>
     </section>
 
@@ -377,67 +432,20 @@
         <h3 class="section-title">LINKS</h3>
         <div class="banner-container">
             <div class="banner-item">
-                <a href="https://www.30baito.net/tokai/area_aichi.html" rel="nofollow" target="_blank">
+                <a href="https://www.30baito.net/tokai/area_aichi.html" target="_blank">
                     <img src="https://www.30baito.net/img/link/link_468x60_menesu.jpg" alt="30バイト">
                 </a>
             </div>
-
             <div class="banner-item">
-                <a href="https://momojob.net/" target="_blank"><img src="https://momojob.net/images/link/468-60.jpg" alt="ももジョブ"></a>
+                <a href="https://momojob.net/" target="_blank"><img src="https://momojob.net/images/link/468-60.jpg" alt="ももジョブ"></a><br>
                 <a href="https://momojob.net/search/tokai/ar_189/" target="_blank">豊橋/豊川風俗求人</a>
-                <a href="https://momojob.net/search/tokai/ar_189/jd_32/" target="_blank">豊橋/豊川メンズエステ求人</a>
             </div>
-
             <div class="banner-item">
                 <a href="https://refjob.jp/" target="_blank"><img src="https://refjob.jp/lib/img/banner_46860.jpg" alt="リフラクジョブ"></a>
             </div>
-
-            <div class="banner-item">
-                <a href="https://haji-s.com/tokai/area_aichi/kariya/type_industry03" rel="nofollow" target="_blank">
-                    <img src="https://haji-s.com/images/link/link_340x60.jpg" alt="はじめてのメンズエステアルバイト">
-                </a>
-            </div>
-
-            <div class="banner-item">
-                <a href="https://eslove.jp/chubu/aichi/shoplist/" target="_blank">
-                    <img src="https://eslove.jp/eslove_front_theme/banner/banner_200x40.jpg" alt="エステラブ">
-                </a>
-            </div>
-
             <div class="banner-item">
                 <a href="http://www.esthe-de-job.com/" target="_blank">
                     <img src="http://www.esthe-de-job.com/img/bnnr/468x60.jpg" alt="エステdeジョブ">
-                    <span class="banner-subtext">メンズエステ求人の決定版エステdeジョブ</span>
-                </a>
-            </div>
-
-            <div class="banner-item">
-                <a href="https://pafu2navi.com" rel="nofollow" target="_blank">
-                    <img src="https://pafu2navi.com/images/link/468_60.jpg" alt="ぱふぱふなび">
-                </a>
-            </div>
-
-            <div class="banner-item">
-                <a href="https://www.oremichi.com/hostbu/kantou/" rel="nofollow" target="_blank">
-                    <img src="https://www.oremichi.com/hostbu/img/link/banner_340x60_kantou.jpg" alt="俺の風ホスト部">
-                </a>
-            </div>
-            <div class="banner-item">
-                <a href="https://www.oremichi.com/kantou/" rel="nofollow" target="_blank">
-                    <img src="https://www.oremichi.com/img/link/banner_340x60_kantou.jpg" alt="俺の風">
-                </a>
-            </div>
-
-            <div class="banner-item">
-                <a href="https://www.fuzoku-job109.com/tokai/area_aichi-mikawa-toyohashi.html" rel="nofollow" target="_blank">
-                    <img src="https://www.fuzoku-job109.com/img/link/link_640x80_menesu.jpg" alt="【はじ風】で探す豊橋の求人">
-                </a>
-            </div>
-
-            <div class="banner-item">
-                <a href="https://www.fues.jp/job/tokai/ippan/top.html" target="_blank">
-                    <img src="https://www.fues.jp/upload/banners/job_200.gif" alt="週刊エステ求人"><br>
-                    <span class="banner-subtext">週刊エステ求人「東海・北陸」</span>
                 </a>
             </div>
         </div>
@@ -453,7 +461,6 @@
 <footer>
     <div class="container">
         <p>NOIR - PREMIUM MENS ESTHETIC</p>
-        <p>OPEN 10:00 - CLOSE 05:00 / EVERYDAY OPEN</p>
         <p>&copy; 2024 NOIR All Rights Reserved.</p>
     </div>
 </footer>
