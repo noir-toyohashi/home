@@ -6,27 +6,146 @@
     <title>WEEKLY SCHEDULE | Noir（ノワール）</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; padding: 0; font-family: 'Noto Serif JP', serif; background-color: #0a0a0a; color: #d1d1d1; line-height: 1.8; padding-bottom: 80px; }
-        .container { width: 92%; max-width: 900px; margin: 0 auto; padding: 40px 0; }
-        a { text-decoration: none; color: #c9a063; }
-        
-        header { background: #000; padding: 30px 0; text-align: center; border-bottom: 1px solid #444; }
-        .shop-name { font-family: 'Cinzel', serif; font-size: 24px; color: #c9a063; letter-spacing: 5px; }
+        /* --- 基本設定 --- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Serif JP', serif;
+            background-color: #0a0a0a;
+            color: #d1d1d1;
+            line-height: 1.8;
+            padding-bottom: 50px;
+        }
 
-        .section-title { font-family: 'Cinzel', serif; font-size: 20px; color: #c9a063; text-align: center; letter-spacing: 4px; margin-bottom: 40px; }
-        .section-title::after { content: ''; display: block; width: 30px; height: 1px; background: #c9a063; margin: 10px auto; }
+        .container {
+            width: 95%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
 
-        /* スケジュール表のスタイル */
-        .schedule-table { width: 100%; border-collapse: collapse; background: #111; border: 1px solid #222; font-size: 12px; }
-        .schedule-table th, .schedule-table td { border: 1px solid #222; padding: 15px 5px; text-align: center; }
-        .schedule-table th { background: #000; color: #c9a063; font-weight: normal; }
-        .schedule-table .day { font-size: 10px; color: #888; display: block; }
-        
-        .name { color: #fff; font-weight: bold; margin-bottom: 5px; display: block; }
-        .time { color: #c9a063; font-size: 11px; }
+        header {
+            background: #000;
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 1px solid #444;
+            margin-bottom: 30px;
+        }
 
-        .back-btn { text-align: center; margin-top: 40px; }
-        .back-btn a { font-size: 12px; border-bottom: 1px solid #c9a063; padding-bottom: 5px; }
+        .shop-name {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            color: #c9a063;
+            letter-spacing: 5px;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            color: #c9a063;
+            text-align: center;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 1px;
+            background: #c9a063;
+            margin: 10px auto;
+        }
+
+        /* --- スケジュール表（横：日付 / 縦：名前） --- */
+        .schedule-wrapper {
+            overflow-x: auto; /* スマホで横スクロール可能に */
+            border: 1px solid #222;
+        }
+
+        .schedule-table {
+            width: 100%;
+            min-width: 600px; /* スマホで潰れないように最小幅を設定 */
+            border-collapse: collapse;
+            background: #111;
+        }
+
+        .schedule-table th, .schedule-table td {
+            border: 1px solid #222;
+            padding: 15px 5px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* 左端の名前列 */
+        .schedule-table th.therapist-name {
+            background: #000;
+            color: #fff;
+            width: 120px;
+            font-weight: bold;
+            position: sticky; /* スクロールしても名前が見えるように */
+            left: 0;
+            z-index: 10;
+            border-right: 2px solid #c9a063;
+        }
+
+        /* 上部の日付行 */
+        .schedule-table thead th {
+            background: #000;
+            color: #c9a063;
+            font-family: 'Cinzel', serif;
+            font-weight: normal;
+        }
+
+        .schedule-table thead th span.day-label {
+            display: block;
+            font-size: 10px;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        /* 時間のテキスト */
+        .time-slot {
+            color: #c9a063;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+        }
+
+        .off-slot {
+            color: #444;
+            font-size: 11px;
+        }
+
+        /* --- 戻るボタン --- */
+        .back-btn {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .back-btn a {
+            color: #c9a063;
+            text-decoration: none;
+            font-size: 12px;
+            border: 1px solid #c9a063;
+            padding: 10px 30px;
+            transition: 0.3s;
+        }
+
+        .back-btn a:hover {
+            background: #c9a063;
+            color: #000;
+        }
+
+        /* スマホ向け調整 */
+        @media (max-width: 600px) {
+            .schedule-table th, .schedule-table td {
+                padding: 10px 2px;
+                font-size: 11px;
+            }
+            .schedule-table th.therapist-name {
+                width: 80px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -38,54 +157,57 @@
 <div class="container">
     <h3 class="section-title">WEEKLY SCHEDULE</h3>
 
-    <table class="schedule-table">
-        <thead>
-            <tr>
-                <th>3/25<span class="day">水</span></th>
-                <th>3/26<span class="day">木</span></th>
-                <th>3/27<span class="day">金</span></th>
-                <th>3/28<span class="day">土</span></th>
-                <th>3/29<span class="day">日</span></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <span class="name">あきな</span>
-                    <span class="time">10-18</span>
-                </td>
-                <td>ー</td>
-                <td>
-                    <span class="name">あきな</span>
-                    <span class="time">10-18</span>
-                </td>
-                <td>
-                    <span class="name">あきな</span>
-                    <span class="time">12-20</span>
-                </td>
-                <td>ー</td>
-            </tr>
-            <tr>
-                <td>
-                    <span class="name">はるか</span>
-                    <span class="time">13-21</span>
-                </td>
-                <td>
-                    <span class="name">はるか</span>
-                    <span class="time">13-21</span>
-                </td>
-                <td>ー</td>
-                <td>ー</td>
-                <td>
-                    <span class="name">はるか</span>
-                    <span class="time">10-18</span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="schedule-wrapper">
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th class="therapist-name">NAME</th>
+                    <th>3/25<span class="day-label">WED</span></th>
+                    <th>3/26<span class="day-label">THU</span></th>
+                    <th>3/27<span class="day-label">FRI</span></th>
+                    <th>3/28<span class="day-label">SAT</span></th>
+                    <th>3/29<span class="day-label">SUN</span></th>
+                    <th>3/30<span class="day-label">MON</span></th>
+                    <th>3/31<span class="day-label">TUE</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th class="therapist-name">あきな</th>
+                    <td class="time-slot">10-18</td>
+                    <td class="off-slot">ー</td>
+                    <td class="time-slot">10-18</td>
+                    <td class="time-slot">10-18</td>
+                    <td class="time-slot">12-20</td>
+                    <td class="off-slot">ー</td>
+                    <td class="time-slot">10-18</td>
+                </tr>
+                <tr>
+                    <th class="therapist-name">はるか</th>
+                    <td class="off-slot">ー</td>
+                    <td class="time-slot">13-21</td>
+                    <td class="time-slot">13-21</td>
+                    <td class="off-slot">ー</td>
+                    <td class="time-slot">13-21</td>
+                    <td class="time-slot">18-02</td>
+                    <td class="time-slot">13-21</td>
+                </tr>
+                <tr>
+                    <th class="therapist-name">ゆい</th>
+                    <td class="time-slot">18-02</td>
+                    <td class="time-slot">18-02</td>
+                    <td class="off-slot">ー</td>
+                    <td class="time-slot">18-02</td>
+                    <td class="off-slot">ー</td>
+                    <td class="time-slot">18-02</td>
+                    <td class="off-slot">ー</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <div class="back-btn">
-        <a href="index.html">TOPへ戻る</a>
+        <a href="index.html">BACK TO TOP</a>
     </div>
 </div>
 
