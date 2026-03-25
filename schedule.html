@@ -149,67 +149,61 @@
     </style>
 </head>
 <body>
-
-<header>
-    <div class="shop-name">NOIR</div>
-</header>
+<header><div class="shop-name">NOIR</div></header>
 
 <div class="container">
     <h3 class="section-title">WEEKLY SCHEDULE</h3>
-
     <div class="schedule-wrapper">
-        <table class="schedule-table">
-            <thead>
-                <tr>
-                    <th class="therapist-name">NAME</th>
-                    <th>3/25<span class="day-label">WED</span></th>
-                    <th>3/26<span class="day-label">THU</span></th>
-                    <th>3/27<span class="day-label">FRI</span></th>
-                    <th>3/28<span class="day-label">SAT</span></th>
-                    <th>3/29<span class="day-label">SUN</span></th>
-                    <th>3/30<span class="day-label">MON</span></th>
-                    <th>3/31<span class="day-label">TUE</span></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th class="therapist-name">あきな</th>
-                    <td class="time-slot">10-18</td>
-                    <td class="off-slot">ー</td>
-                    <td class="time-slot">10-18</td>
-                    <td class="time-slot">10-18</td>
-                    <td class="time-slot">12-20</td>
-                    <td class="off-slot">ー</td>
-                    <td class="time-slot">10-18</td>
-                </tr>
-                <tr>
-                    <th class="therapist-name">はるか</th>
-                    <td class="off-slot">ー</td>
-                    <td class="time-slot">13-21</td>
-                    <td class="time-slot">13-21</td>
-                    <td class="off-slot">ー</td>
-                    <td class="time-slot">13-21</td>
-                    <td class="time-slot">18-02</td>
-                    <td class="time-slot">13-21</td>
-                </tr>
-                <tr>
-                    <th class="therapist-name">ゆい</th>
-                    <td class="time-slot">18-02</td>
-                    <td class="time-slot">18-02</td>
-                    <td class="off-slot">ー</td>
-                    <td class="time-slot">18-02</td>
-                    <td class="off-slot">ー</td>
-                    <td class="time-slot">18-02</td>
-                    <td class="off-slot">ー</td>
-                </tr>
-            </tbody>
+        <table id="schedule-table" class="schedule-table">
+            <p id="loading" style="text-align:center;">Loading schedule...</p>
         </table>
     </div>
-
-    <div class="back-btn">
-        <a href="index.html">BACK TO TOP</a>
-    </div>
+    <div class="back-btn"><a href="index.html">BACK TO TOP</a></div>
 </div>
 
+<script>
+    // 先ほどコピーしたGASのURLをここに貼り付けてください
+    const gasUrl = "ここにGASのURLを貼り付け";
+
+    async function fetchSchedule() {
+        try {
+            const response = await fetch(gasUrl);
+            const data = await response.json();
+            const table = document.getElementById('schedule-table');
+            const loading = document.getElementById('loading');
+            
+            let html = "<thead><tr>";
+            // 1行目（ヘッダー/日付）の生成
+            data[0].forEach((cell, index) => {
+                const className = index === 0 ? "therapist-name" : "";
+                html += `<th class="${className}">${cell}</th>`;
+            });
+            html += "</tr></thead><tbody>";
+
+            // 2行目以降（女の子ごとの時間）の生成
+            for (let i = 1; i < data.length; i++) {
+                html += "<tr>";
+                data[i].forEach((cell, index) => {
+                    if (index === 0) {
+                        html += `<th class="therapist-name">${cell}</th>`;
+                    } else {
+                        const timeClass = (cell === "ー" || cell === "") ? "off-slot" : "time-slot";
+                        html += `<td class="${timeClass}">${cell || "ー"}</td>`;
+                    }
+                });
+                html += "</tr>";
+            }
+            html += "</tbody>";
+            
+            table.innerHTML = html;
+            loading.style.display = "none";
+        } catch (error) {
+            console.error("読み込みエラー:", error);
+            document.getElementById('loading').innerText = "スケジュールの読み込みに失敗しました。";
+        }
+    }
+
+    fetchSchedule();
+</script>
 </body>
 </html>
