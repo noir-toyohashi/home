@@ -130,11 +130,27 @@
 
         .therapist-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
         .therapist-card { background: linear-gradient(145deg, #1a1a1a, #0a0a0a); padding: 25px; border: 1px solid #222; display: flex; align-items: center; }
-        .therapist-icon { width: 70px; height: 70px; background: #000; color: #c9a063; border: 1px solid #c9a063; font-size: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px;flex-shrink: 0; }
+        
+        /* アイコンの歪み修正済み */
+        .therapist-icon { 
+            width: 70px; 
+            height: 70px; 
+            background: #000; 
+            color: #c9a063; 
+            border: 1px solid #c9a063; 
+            font-size: 22px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin-right: 20px;
+            flex-shrink: 0; /* これで正円を維持します */
+        }
+
         .therapist-info h4 { margin: 0 0 5px 0; font-size: 18px; color: #fff; }
         .therapist-info p { margin: 0; font-size: 11px; color: #888; }
 
-        /* 店長コメント専用のスタイル */
+        /* 店長コメントスタイル */
         .manager-comment {
             margin-top: 5px !important;
             font-size: 10px !important;
@@ -172,6 +188,7 @@
         .banner-text-links a { margin: 0 5px; text-decoration: underline; }
         .banner-sub { display: block; font-size: 10px; color: #555; margin-top: 3px; }
 
+        /* 下部固定メニュー */
         .fixed-menu { position: fixed; bottom: 0; left: 0; width: 100%; background: #000; display: flex; justify-content: space-around; padding: 12px 0; z-index: 100; border-top: 1px solid #c9a063; }
         .fixed-menu a { color: #c9a063; text-align: center; font-size: 9px; }
         .fixed-menu span { display: block; font-size: 20px; margin-bottom: 3px; }
@@ -264,6 +281,14 @@
         <section id="access" class="section">
             <h3 class="section-title">AREA & ACCESS</h3>
             <div class="access-box">
+                <div class="access-header">お電話でのご予約</div>
+                <div style="text-align:center; padding: 10px 0;">
+                    <a href="tel:07036018118" style="font-size: 24px; color: #c9a063; font-family: 'Cinzel', serif; font-weight: bold;">070-3601-8118</a>
+                    <p style="font-size: 10px; color: #888; margin-top: 5px;">受付時間 10:00 - 翌05:00</p>
+                </div>
+            </div>
+
+            <div class="access-box">
                 <div class="access-header">提携ホテル（交通費無料）</div>
                 <div class="hotel-item">
                     <div><span class="hotel-name">豊橋ラフォーレ</span><br><a href="#" class="map-link">Googleマップで確認</a></div>
@@ -301,9 +326,9 @@
     </div>
 
     <div class="fixed-menu">
-        <a href="tel:080-0000-0000"><span>📞</span>CALL</a>
-        <a href="sms:080-0000-0000"><span>✉</span>SMS</a>
-        <a href="#"><span>💬</span>LINE</a>
+        <a href="tel:07036018118"><span>📞</span>CALL</a>
+        <a href="sms:07036018118"><span>✉</span>SMS</a>
+        <a href="https://line.me/ti/p/あなたのLINEIDなどのURL"><span>💬</span>LINE</a>
     </div>
 
     <footer>
@@ -316,24 +341,17 @@
     <script>
         const gasUrl = "https://script.google.com/macros/s/AKfycbwk2G3BjEyIRPwTU4vp_dICh_YBLwGMslElSuTpN7YG2fGSz7EghwsqmfVnv8pTmPNhbQ/exec"; 
 
-        // 1. お知らせの取得
         async function fetchNews() {
             try {
                 const response = await fetch(gasUrl + "?sheet=お知らせ", { redirect: "follow" });
                 const data = await response.json();
                 const newsList = document.getElementById('news-list');
                 const loading = document.getElementById('news-loading');
-                
                 let html = "";
                 for (let i = 1; i < data.length; i++) {
                     const [date, label, text] = data[i];
                     if (!date) continue;
-                    html += `
-                        <li>
-                            <span class="date">${date}</span>
-                            <span class="label">${label}</span>
-                            <span>${text}</span>
-                        </li>`;
+                    html += `<li><span class="date">${date}</span><span class="label">${label}</span><span>${text}</span></li>`;
                 }
                 newsList.innerHTML = html;
                 if (loading) loading.style.display = 'none';
@@ -343,14 +361,12 @@
             }
         }
 
-        // 2. セラピストの取得
         async function fetchTherapists() {
             try {
                 const response = await fetch(gasUrl + "?sheet=セラピスト", { redirect: "follow" });
                 const data = await response.json();
                 const list = document.getElementById('therapist-list');
                 const loading = document.getElementById('therapist-loading');
-                
                 let html = "";
                 for (let i = 1; i < data.length; i++) {
                     const [icon, name, catchCopy, comment] = data[i];
@@ -373,7 +389,6 @@
             }
         }
 
-        // 実行
         fetchNews();
         fetchTherapists();
     </script>
